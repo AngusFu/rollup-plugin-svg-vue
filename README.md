@@ -1,2 +1,7 @@
 # rollup-plugin-svg-vue
-SVG to compiled vue
+
+Compile SVG files to compiled vue objects.
+
+```bash
+$ npm install --save-dev rollup-plugin-svg-vue
+```

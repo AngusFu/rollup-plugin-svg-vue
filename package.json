@@ -1,0 +1,27 @@
+{
+  "name": "rollup-plugin-svg-vue",
+  "version": "1.0.0",
+  "description": "SVG to compiled vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngusFu/rollup-plugin-svg-vue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AngusFu/rollup-plugin-svg-vue/issues"
+  },
+  "homepage": "https://github.com/AngusFu/rollup-plugin-svg-vue#readme",
+  "dependencies": {
+    "fs-extra": "^5.0.0",
+    "rollup-pluginutils": "^2.0.1",
+    "vueify": "^9.4.1"
+  },
+  "devDependencies": {
+    "rollup": "^0.53.0"
+  }
+}
