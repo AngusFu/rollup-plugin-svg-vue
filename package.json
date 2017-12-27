@@ -18,6 +18,7 @@
   "homepage": "https://github.com/AngusFu/rollup-plugin-svg-vue#readme",
   "dependencies": {
     "fs-extra": "^5.0.0",
+    "glob": "^7.1.2",
     "rollup-pluginutils": "^2.0.1",
     "vueify": "^9.4.1"
   },
