@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/AngusFu/rollup-plugin-svg-vue#readme",
   "dependencies": {
+    "find-npm-prefix": "^1.0.2",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
     "rollup-pluginutils": "^2.0.1",
-    "vueify": "^9.4.1"
+    "vue-template-compiler": "^2.5.13",
+    "vue-template-es2015-compiler": "^1.6.0",
+    "x-path": "0.0.2"
   },
   "devDependencies": {
     "rollup": "^0.53.0"

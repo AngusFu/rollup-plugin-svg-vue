@@ -10,18 +10,9 @@ const {
 } = require('x-path')
 
 const glob = require('glob')
-const { compiler } = require('vueify')
-const { createFilter } = require('rollup-pluginutils')
 const findNpmPrefix = require('find-npm-prefix')
-
-const wrapCompiled = function ({ result, name }) {
-  return `(function (module) {
-  ${result}
-  return module.exports;
-})({exports: {
-  name: ${JSON.stringify(name)}
-}})`
-}
+const { createFilter } = require('rollup-pluginutils')
+const compileTemplate = require('./template-compiler')
 
 module.exports = ({ include, exclude } = {}) => {
   const filter = createFilter(include, exclude)
@@ -78,26 +69,16 @@ function svg2vue (file) {
       }
       return source
     })
-    .then(source => `<template>${source}</template>`)
-    .then(template => compilePromise(template, file))
-    .then(result => {
-      return wrapCompiled({
-        result,
-        name: basename(file, '.svg')
-      })
+    .then(source => compileTemplate(source))
+    .then(({ render, staticRenderFns }) => {
+      const name = basename(file, '.svg')
+      return `{
+  name: ${JSON.stringify(name)},
+  render: ${render},
+  staticRenderFns: ${staticRenderFns}
+}`
     })
-}
-
-function compilePromise (code, path) {
-  return new Promise((resolve, reject) => {
-    compiler.compile(code, path, (err, result) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(result)
-      }
-    })
-  })
+    .catch(e => console.error(e))
 }
 
 let npmPrefix = null
